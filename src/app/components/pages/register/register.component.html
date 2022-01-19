@@ -1,0 +1,43 @@
+<form [formGroup]="registerForm" class="pt-5">
+    
+    <h1 class="h3 mt-5 mb-3 fw-normal">Please create your account</h1>
+
+    <div class="form-floating">
+        <input type="text" class="form-control" formControlName="username"id="floatingInput" placeholder="Username" required>
+        <div *ngIf ="registerForm.get('username').touched && registerForm.get('username').invalid" class="alert alert-danger">
+            <div *ngIf="registerForm.get('username')?.errors?.required">
+                Username is Required
+            </div>
+            
+        </div>
+        <label for="floatingInput">Username</label>
+      </div>
+      
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingEmail" formControlName="email" placeholder="name@example.com" required>
+      <div *ngIf ="registerForm.get('email').touched && registerForm.get('email').invalid" class="alert alert-danger">
+        <div *ngIf="registerForm.get('email')?.errors?.required">
+            Email is Required
+        </div>
+        
+    </div>
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Password">
+      <div *ngIf ="registerForm.get('password').touched && registerForm.get('password').invalid" class="alert alert-danger">
+        <div *ngIf="registerForm.get('password')?.errors?.minlength">
+            Minimum length is 5
+        </div>
+        <div *ngIf="registerForm.get('email')?.errors?.required">
+            Email is Required
+        </div>
+    </div>
+      <label for="floatingPassword" required>Password</label>
+    </div>
+
+    
+
+  
+    <button routerLink="/home" class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+

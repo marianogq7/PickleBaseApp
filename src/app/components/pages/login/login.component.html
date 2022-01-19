@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm" class="pt-5">
+    
+    <h1 class="h3 mt-5 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+        <input type="text" class="form-control" formControlName="email"id="floatingInput" placeholder="email" required>
+        <div *ngIf ="loginForm.get('email').touched && loginForm.get('email').invalid" class="alert alert-danger">
+            <div *ngIf="loginForm.get('email')?.errors?.required">
+                Email is Required
+            </div>
+            
+        </div>
+        <label for="floatingInput">email</label>
+      </div>
+      
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="name@example.com" required>
+      <div *ngIf ="loginForm.get('password').touched && loginForm.get('password').invalid" class="alert alert-danger">
+        <div *ngIf="loginForm.get('password')?.errors?.required">
+            Email is Required
+        </div>
+        
+    </div>
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button routerLink="/home" class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+
+  </form>
